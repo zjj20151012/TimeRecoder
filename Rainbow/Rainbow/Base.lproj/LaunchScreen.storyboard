@@ -62,28 +62,16 @@
                                 <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="w" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL9-2Z-5ou">
-                                <rect key="frame" x="284" y="90" width="28.5" height="53.5"/>
-                                <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="w" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL9-2Z-5ou">
+                                <rect key="frame" x="284" y="90" width="71" height="47.5"/>
+                                <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="40"/>
                                 <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用语音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52i-kl-llA">
-                                <rect key="frame" x="141.5" y="317.5" width="79.5" height="31.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朱佳杰 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7o-uI-K2B">
                                 <rect key="frame" x="20" y="641" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记录您的生活" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nL0-Pi-8l2">
-                                <rect key="frame" x="241" y="323" width="104" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -94,26 +82,21 @@
                             <constraint firstItem="d9R-gt-UCy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="BjP-PR-wsV"/>
                             <constraint firstItem="9sJ-di-Lgc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="FMz-Lh-hJE"/>
                             <constraint firstItem="ZL9-2Z-5ou" firstAttribute="leading" secondItem="Sja-A9-2G6" secondAttribute="trailing" constant="20" id="Fm8-ho-ps8"/>
-                            <constraint firstItem="nL0-Pi-8l2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="52i-kl-llA" secondAttribute="trailing" constant="8" symbolic="YES" id="GkK-hc-JXK"/>
-                            <constraint firstItem="52i-kl-llA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Nde-77-YGE"/>
                             <constraint firstItem="wwt-8D-1XT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PNY-Mk-ztV"/>
                             <constraint firstItem="9sJ-di-Lgc" firstAttribute="leading" secondItem="cuF-6z-WxC" secondAttribute="trailing" constant="20" id="QCY-mS-kDs"/>
                             <constraint firstItem="cuF-6z-WxC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="SEF-d3-DcW"/>
                             <constraint firstItem="1us-AV-HGe" firstAttribute="leading" secondItem="9sJ-di-Lgc" secondAttribute="trailing" constant="20" id="WS6-gN-FJc"/>
                             <constraint firstItem="Sja-A9-2G6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="55" id="ZgR-5N-6rD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nL0-Pi-8l2" secondAttribute="trailing" constant="30" id="ZjF-LV-ceT"/>
                             <constraint firstItem="cuF-6z-WxC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="cBf-SB-wvb"/>
-                            <constraint firstItem="52i-kl-llA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="141.5" id="cat-fZ-YKU"/>
                             <constraint firstItem="1us-AV-HGe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="cwO-gf-vBe"/>
                             <constraint firstItem="O7o-uI-K2B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="emA-Hs-VIW"/>
                             <constraint firstItem="d9R-gt-UCy" firstAttribute="leading" secondItem="1us-AV-HGe" secondAttribute="trailing" constant="20" id="i2P-H9-ygL"/>
                             <constraint firstItem="wwt-8D-1XT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="mCU-a0-gwl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wwt-8D-1XT" secondAttribute="bottom" id="rIP-H8-Svr"/>
-                            <constraint firstItem="nL0-Pi-8l2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sJi-Os-UJe"/>
                             <constraint firstItem="Sja-A9-2G6" firstAttribute="leading" secondItem="1EC-iK-c9n" secondAttribute="trailing" constant="20" id="t0I-KY-8mu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwt-8D-1XT" secondAttribute="trailing" id="tId-vb-vnx"/>
                             <constraint firstItem="ZL9-2Z-5ou" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="uxJ-mh-20S"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZL9-2Z-5ou" secondAttribute="trailing" constant="20" symbolic="YES" id="weN-dh-vPx"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ZL9-2Z-5ou" secondAttribute="trailing" constant="20" symbolic="YES" id="wlo-Dy-eIC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="O7o-uI-K2B" secondAttribute="bottom" constant="5" id="xA1-Lw-Cjw"/>
                             <constraint firstItem="1EC-iK-c9n" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="xxe-Bx-ph5"/>
                         </constraints>

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RainbowListViewController: BaseViewController {
-
+class RainbowListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var RainbowRecordList: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,15 +27,13 @@ class RainbowListViewController: BaseViewController {
         return sb.instantiateViewController(withIdentifier: "RainbowListViewController") as! RainbowListViewController
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: tableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return 1
+    }
 
 }

@@ -68,10 +68,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7KF-Gn-dbi" customClass="Rain"/>
+                    <navigationItem key="navigationItem" id="7KF-Gn-dbi"/>
                     <connections>
                         <outlet property="recordView" destination="Nno-DE-0rl" id="ZRA-mA-qn6"/>
                         <outlet property="tipLabel" destination="6WF-hE-6PM" id="U6D-vu-2ce"/>
+                        <segue destination="N7m-vL-9O0" kind="show" identifier="pushToList" id="Jpq-8a-SQ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,16 +83,31 @@
         <scene sceneID="odH-FA-PBq">
             <objects>
                 <viewController storyboardIdentifier="RainbowListViewController" id="N7m-vL-9O0" customClass="RainbowListViewController" customModule="Rainbow" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9rE-nW-IO4" customClass="Rainbow">
+                    <view key="view" contentMode="scaleToFill" id="9rE-nW-IO4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-Vd-zpQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wMm-eP-zo1" firstAttribute="bottom" secondItem="B8n-Vd-zpQ" secondAttribute="bottom" id="6Bv-AX-Ad6"/>
+                            <constraint firstItem="wMm-eP-zo1" firstAttribute="trailing" secondItem="B8n-Vd-zpQ" secondAttribute="trailing" id="CBL-IB-N21"/>
+                            <constraint firstItem="B8n-Vd-zpQ" firstAttribute="top" secondItem="9rE-nW-IO4" secondAttribute="top" id="URh-8u-GzW"/>
+                            <constraint firstItem="B8n-Vd-zpQ" firstAttribute="leading" secondItem="wMm-eP-zo1" secondAttribute="leading" id="btK-xa-sX1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wMm-eP-zo1"/>
                     </view>
+                    <connections>
+                        <outlet property="rainbowRecordList" destination="B8n-Vd-zpQ" id="79L-MX-pdr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kO-Uo-O2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410" y="41"/>
+            <point key="canvasLocation" x="532" y="19.340329835082461"/>
         </scene>
     </scenes>
     <resources>

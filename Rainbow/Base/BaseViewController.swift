@@ -30,6 +30,10 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = navigationBarTintColor
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -39,7 +43,11 @@ class BaseViewController: UIViewController {
     }
     
     //MARK:------------------------------设置导航栏------------------------------------
-    
+    //MARK: 设置导航栏的背景色(默认蓝色)
+    func setNavBackgroundColor() {
+        self.navigationController?.navigationBar.barTintColor =
+            appThemeColor()
+    }
     //MARK: 设置导航栏标题
     /**
      设置导航栏的标题，默认白色
@@ -134,10 +142,7 @@ class BaseViewController: UIViewController {
             self?.navigationController?.navigationBar.isTranslucent = true
             self?.navigationController?.view.backgroundColor = UIColor.clear
             self?.navigationController?.navigationBar.backgroundColor = UIColor.clear
-            }, completion: { [weak self] (_) in
-                self?.navigationController?.navigationBar.tintColor = navigationBarTintColor
-                self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white] as [NSAttributedStringKey: Any]
-        })
+            }, completion: nil)
     }
     
     //MARK: 取消导航栏透明
@@ -147,9 +152,9 @@ class BaseViewController: UIViewController {
             self?.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
             self?.navigationController?.navigationBar.isTranslucent = false
             }, completion: { [weak self] (_) in
-                
-                self?.navigationController?.navigationBar.tintColor = appThemeColor()
-                self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): appThemeColor()] as [NSAttributedStringKey: Any]
+                self?.setNavBackgroundColor()
+//                self?.navigationController?.navigationBar.tintColor = appThemeColor()
+//                self?.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): appThemeColor()] as [NSAttributedStringKey: Any]
         })
     }
     
@@ -165,7 +170,7 @@ class BaseViewController: UIViewController {
      - parameter right:      右按钮点击事件
      - parameter complition: 提示框弹出完成之后的闭包
      */
-    func alert(alertTitle title: String?, messageString message: String? = nil, leftButtonTitle leftTitle: String = NSLocalizedString("好的", comment: ""), rightButtonTitle rightTitle: String? = nil, leftClosure left: (()->())? = nil, rightClosure right: (()->())? = nil, presentComplition complition: (()->())? = nil) {
+    func alert(alertTitle title: String?, messageString message: String? = nil, leftButtonTitle leftTitle: String = "好", rightButtonTitle rightTitle: String? = nil, leftClosure left: (()->())? = nil, rightClosure right: (()->())? = nil, presentComplition complition: (()->())? = nil) {
         
         let ac: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -177,7 +182,7 @@ class BaseViewController: UIViewController {
         if (rightTitle != nil) {
             let rightAc: UIAlertAction = UIAlertAction(title: rightTitle, style: .default, handler: { (_) in
                 right?()
-            })//右按钮
+            })// 右按钮
             ac.addAction(rightAc)
         }
         

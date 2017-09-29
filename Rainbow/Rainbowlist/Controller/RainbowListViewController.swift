@@ -8,17 +8,66 @@
 
 import UIKit
 
-class RainbowListViewController: BaseViewController {
-
+class RainbowListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    static let cellIdentify = "RainbowListCell"
+    
+    @IBOutlet weak var rainbowRecordList: UITableView!
+    
+    var dataDict: NSDictionary   = NSMutableDictionary.init()
+    var dataArr : NSMutableArray = NSMutableArray.init()
+    var keyArr  : NSMutableArray = NSMutableArray.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUI()
+        setData()
+    }
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    //MARK: 设置导航栏
+    fileprivate func setNavigation() {
+        setNavigationTitle("我的语音日记")
+    }
+    
+    //MARK: 设置UI
+    func setUI() {
+        self.rainbowRecordList.delegate = self
+        self.rainbowRecordList.dataSource = self
+        self.rainbowRecordList.backgroundView = UIImageView.init(image: UIImage.init(named: "rainbow_list"))
+    }
+    
+    //MARK: 数据的处理
+    func setData() {
+        let data = getSavedAudio() as NSMutableDictionary
+        if data.count == 0 {
+            let alert = UIAlertController.init(title: "提示", message: "您还没有录制过任何语音日记,请先录制", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction.init(title: "好", style: UIAlertActionStyle.default, handler: { (nil) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.dataDict = data
+            for (key, value) in self.dataDict {
+                self.dataArr.add(value)
+                self.keyArr.add(key)
+            }
+            print(dataDict)
+            print("dataArr:", dataArr)
+            print("keyArr:", keyArr)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     class func getRainbowListVC() -> RainbowListViewController {
@@ -26,15 +75,52 @@ class RainbowListViewController: BaseViewController {
         return sb.instantiateViewController(withIdentifier: "RainbowListViewController") as! RainbowListViewController
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: tableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let array: NSArray = self.dataArr[section] as! NSArray
+        return array.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: RainbowListCell = RainbowListCell.initRainbowListCell(tableView: self.rainbowRecordList, identify: RainbowListViewController.cellIdentify) as! RainbowListCell
+        cell.backgroundColor = UIColor.clear
+        let array: NSArray = dataArr[indexPath.section] as! NSArray
+        if playIndex == nil || playIndex != indexPath {
+            cell.bgView.backgroundColor = UIColor.white
+        } else {
+            let array: NSArray = self.dataArr[playIndex.section] as! NSArray
+            let model: RainbowRecodModel = array[playIndex.row] as! RainbowRecodModel
+            let listModel:RainbowListModel = RainbowListModel.init(index: model.weekday.integerValue)
+            cell.bgView.backgroundColor = listModel.color
+        }
+        cell.assignData(data: array[indexPath.row] as! RainbowRecodModel, playInfo: dataArr)
+        return cell
+    }
+    
+    //MARK: tableViewDelegate
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel.init()
+        label.text = (keyArr[section] as! String) + "日的语音日记"
+        label.backgroundColor = UIColor.white
+        label.textColor = appThemeColor()
+        label.textAlignment = NSTextAlignment.center
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dataDict.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CommonRecordManager.sharedManager.pause()
+    }
+    
 }

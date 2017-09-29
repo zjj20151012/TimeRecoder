@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB1D06761F7D2B8E00DFF76D /* RainbowListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1D06741F7D2B8E00DFF76D /* RainbowListCell.swift */; };
+		AB1D06771F7D2B8E00DFF76D /* RainbowListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1D06751F7D2B8E00DFF76D /* RainbowListCell.xib */; };
+		AB1D067E1F7D511300DFF76D /* audioRecord.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB1D067D1F7D511300DFF76D /* audioRecord.plist */; };
 		AB25FBBA1F7C0FA40067B49F /* RainbowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25FBB91F7C0FA40067B49F /* RainbowViewController.swift */; };
 		AB25FBC21F7C20050067B49F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25FBC11F7C20050067B49F /* UIColorExtension.swift */; };
 		AB25FBC81F7C2A600067B49F /* RainbowListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB25FBC71F7C2A600067B49F /* RainbowListViewController.swift */; };
 		AB59F3E71F7BDE1100AB15C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59F3E61F7BDE1100AB15C8 /* AppDelegate.swift */; };
-		AB59F3E91F7BDE1100AB15C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59F3E81F7BDE1100AB15C8 /* ViewController.swift */; };
 		AB59F3EC1F7BDE1100AB15C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB59F3EA1F7BDE1100AB15C8 /* Main.storyboard */; };
 		AB59F3EE1F7BDE1100AB15C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB59F3ED1F7BDE1100AB15C8 /* Assets.xcassets */; };
 		AB59F3F11F7BDE1100AB15C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB59F3EF1F7BDE1100AB15C8 /* LaunchScreen.storyboard */; };
@@ -19,6 +21,9 @@
 		AB59F4071F7BDE1100AB15C8 /* RainbowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59F4061F7BDE1100AB15C8 /* RainbowUITests.swift */; };
 		AB59F4181F7BE37A00AB15C8 /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59F4171F7BE37A00AB15C8 /* CommonTool.swift */; };
 		AB59F41E1F7BECC600AB15C8 /* RainbowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB59F41D1F7BECC600AB15C8 /* RainbowView.swift */; };
+		AB682EBE1F7D673100C3B40A /* RainbowRecodModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB682EBD1F7D673100C3B40A /* RainbowRecodModel.swift */; };
+		ABB95D641F7E1CA300BEBC93 /* RainbowListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB95D631F7E1CA300BEBC93 /* RainbowListModel.swift */; };
+		ABD504321F7E61390013F61B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD504311F7E61390013F61B /* UIViewExtension.swift */; };
 		ABF912A81F7C92C800F9D711 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF912A61F7C92C400F9D711 /* BaseViewController.swift */; };
 		ABF912A91F7C92CB00F9D711 /* BaseVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF912A71F7C92C400F9D711 /* BaseVisualEffectView.swift */; };
 		ABF912AB1F7C942E00F9D711 /* CommonRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF912AA1F7C942E00F9D711 /* CommonRecordManager.swift */; };
@@ -43,12 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB1D06741F7D2B8E00DFF76D /* RainbowListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowListCell.swift; sourceTree = "<group>"; };
+		AB1D06751F7D2B8E00DFF76D /* RainbowListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RainbowListCell.xib; sourceTree = "<group>"; };
+		AB1D067D1F7D511300DFF76D /* audioRecord.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = audioRecord.plist; sourceTree = "<group>"; };
 		AB25FBB91F7C0FA40067B49F /* RainbowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowViewController.swift; sourceTree = "<group>"; };
 		AB25FBC11F7C20050067B49F /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AB25FBC71F7C2A600067B49F /* RainbowListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowListViewController.swift; sourceTree = "<group>"; };
 		AB59F3E31F7BDE1100AB15C8 /* Rainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB59F3E61F7BDE1100AB15C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB59F3E81F7BDE1100AB15C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AB59F3EB1F7BDE1100AB15C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB59F3ED1F7BDE1100AB15C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB59F3F01F7BDE1100AB15C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +68,9 @@
 		AB59F4081F7BDE1100AB15C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB59F4171F7BE37A00AB15C8 /* CommonTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		AB59F41D1F7BECC600AB15C8 /* RainbowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowView.swift; sourceTree = "<group>"; };
+		AB682EBD1F7D673100C3B40A /* RainbowRecodModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowRecodModel.swift; sourceTree = "<group>"; };
+		ABB95D631F7E1CA300BEBC93 /* RainbowListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowListModel.swift; sourceTree = "<group>"; };
+		ABD504311F7E61390013F61B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		ABF912A61F7C92C400F9D711 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		ABF912A71F7C92C400F9D711 /* BaseVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVisualEffectView.swift; sourceTree = "<group>"; };
 		ABF912AA1F7C942E00F9D711 /* CommonRecordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRecordManager.swift; sourceTree = "<group>"; };
@@ -92,11 +102,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB1D06731F7D2B3000DFF76D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB1D06741F7D2B8E00DFF76D /* RainbowListCell.swift */,
+				AB1D06751F7D2B8E00DFF76D /* RainbowListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AB25FBC31F7C2A390067B49F /* Rainbowlist */ = {
 			isa = PBXGroup;
 			children = (
 				AB25FBC41F7C2A390067B49F /* Controller */,
 				AB25FBC51F7C2A390067B49F /* Model */,
+				AB1D06731F7D2B3000DFF76D /* View */,
 			);
 			path = Rainbowlist;
 			sourceTree = SOURCE_ROOT;
@@ -112,6 +132,7 @@
 		AB25FBC51F7C2A390067B49F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABB95D631F7E1CA300BEBC93 /* RainbowListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -119,6 +140,7 @@
 		AB59F3DA1F7BDE1100AB15C8 = {
 			isa = PBXGroup;
 			children = (
+				ABD504301F7E60E50013F61B /* Extension */,
 				ABF912A51F7C92C400F9D711 /* Base */,
 				AB59F4161F7BE31200AB15C8 /* Common */,
 				AB59F3E51F7BDE1100AB15C8 /* Rainbow */,
@@ -144,11 +166,11 @@
 				AB25FBC31F7C2A390067B49F /* Rainbowlist */,
 				AB59F4191F7BECB000AB15C8 /* RainbowMain */,
 				AB59F3E61F7BDE1100AB15C8 /* AppDelegate.swift */,
-				AB59F3E81F7BDE1100AB15C8 /* ViewController.swift */,
 				AB59F3EA1F7BDE1100AB15C8 /* Main.storyboard */,
 				AB59F3ED1F7BDE1100AB15C8 /* Assets.xcassets */,
 				AB59F3EF1F7BDE1100AB15C8 /* LaunchScreen.storyboard */,
 				AB59F3F21F7BDE1100AB15C8 /* Info.plist */,
+				AB1D067D1F7D511300DFF76D /* audioRecord.plist */,
 			);
 			path = Rainbow;
 			sourceTree = "<group>";
@@ -174,7 +196,6 @@
 		AB59F4161F7BE31200AB15C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				AB25FBC11F7C20050067B49F /* UIColorExtension.swift */,
 				AB59F4171F7BE37A00AB15C8 /* CommonTool.swift */,
 				ABF912AA1F7C942E00F9D711 /* CommonRecordManager.swift */,
 			);
@@ -202,6 +223,7 @@
 		AB59F41B1F7BECB000AB15C8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB682EBD1F7D673100C3B40A /* RainbowRecodModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +234,15 @@
 				AB59F41D1F7BECC600AB15C8 /* RainbowView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ABD504301F7E60E50013F61B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AB25FBC11F7C20050067B49F /* UIColorExtension.swift */,
+				ABD504311F7E61390013F61B /* UIViewExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		ABF912A51F7C92C400F9D711 /* Base */ = {
@@ -333,7 +364,9 @@
 			files = (
 				AB59F3F11F7BDE1100AB15C8 /* LaunchScreen.storyboard in Resources */,
 				AB59F3EE1F7BDE1100AB15C8 /* Assets.xcassets in Resources */,
+				AB1D06771F7D2B8E00DFF76D /* RainbowListCell.xib in Resources */,
 				AB59F3EC1F7BDE1100AB15C8 /* Main.storyboard in Resources */,
+				AB1D067E1F7D511300DFF76D /* audioRecord.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB59F3E91F7BDE1100AB15C8 /* ViewController.swift in Sources */,
+				ABD504321F7E61390013F61B /* UIViewExtension.swift in Sources */,
 				AB25FBC21F7C20050067B49F /* UIColorExtension.swift in Sources */,
 				ABF912AD1F7C9D5900F9D711 /* BaseModel.swift in Sources */,
 				AB59F41E1F7BECC600AB15C8 /* RainbowView.swift in Sources */,
@@ -366,8 +399,11 @@
 				AB59F4181F7BE37A00AB15C8 /* CommonTool.swift in Sources */,
 				ABF912AB1F7C942E00F9D711 /* CommonRecordManager.swift in Sources */,
 				ABF912A81F7C92C800F9D711 /* BaseViewController.swift in Sources */,
+				AB682EBE1F7D673100C3B40A /* RainbowRecodModel.swift in Sources */,
 				ABF912A91F7C92CB00F9D711 /* BaseVisualEffectView.swift in Sources */,
+				ABB95D641F7E1CA300BEBC93 /* RainbowListModel.swift in Sources */,
 				AB59F3E71F7BDE1100AB15C8 /* AppDelegate.swift in Sources */,
+				AB1D06761F7D2B8E00DFF76D /* RainbowListCell.swift in Sources */,
 				AB25FBC81F7C2A600067B49F /* RainbowListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

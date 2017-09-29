@@ -32,6 +32,10 @@ class RainbowViewController: BaseViewController {
     
     /// 录制完音频后的播放按钮
     fileprivate var playBtn: UIButton? = nil
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +48,17 @@ class RainbowViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         // 设置导航栏透明
         transparentNavigationBar()
+        setNavBackgroundColor()
         setUI()
+        playIndex = nil
     }
     
-    func setNavigation() {
+    //MARK: 设置导航栏
+    fileprivate func setNavigation() {
         setNavigationTitle("Rainbow")
         setNavigationBarRightButtonWithTitle("历史日志")
         tapRightBarButtonItem = { [weak self] in
+            self?.cancelTansparentNavigationBar()
             self?.navigationController?.pushViewController(RainbowListViewController.getRainbowListVC(), animated: true)
         }
     }
@@ -63,25 +71,32 @@ class RainbowViewController: BaseViewController {
         // 长按的手势
         let longPressGesture: UILongPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(startRecord(pressGesture:)))
         longPressGesture.allowableMovement = 20.0
+        longPressGesture.minimumPressDuration = 0.5
         self.recordView.addGestureRecognizer(longPressGesture)
         // 播放按钮
-        playBtn = UIButton.init(frame: CGRect.init(x: (self.view.frame.size.width - 100)/2, y: (self.view.frame.size.height - 100 - 64) / 2, width: 100, height: 100))
-        playBtn?.setImage(UIImage.init(named: "rainbow_play"), for: UIControlState.normal)
-        playBtn?.alpha = 0.0
-        playBtn?.isHidden = true
-        playBtn?.addTarget(self, action: #selector(onPlay), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(playBtn!)
-        self.view.bringSubview(toFront: playBtn!)
     }
     
     //MARK: 设置播放按钮
     fileprivate func showOrHidePlayBtn(hide: Bool) {
+        if (playBtn == nil) {
+            playBtn = UIButton.init(frame: CGRect.init(x: (self.view.frame.size.width - 100)/2, y: (self.view.frame.size.height - 100 - 64) / 2, width: 100, height: 100))
+            playBtn?.setImage(UIImage.init(named: "rainbow_play"), for: UIControlState.normal)
+            playBtn?.alpha = 0.0
+            playBtn?.isHidden = true
+            playBtn?.addTarget(self, action: #selector(onPlay), for: UIControlEvents.touchUpInside)
+        }
         playBtn?.alpha = hide ? 0.0 : 1.0
         playBtn?.isHidden = hide
         if hide {
             CommonRecordManager.sharedManager.stop()
+            self.playBtn?.removeFromSuperview()
+            self.playBtn = nil
+        } else {
+            self.view.addSubview(playBtn!)
+            self.view.bringSubview(toFront: playBtn!)
         }
     }
+    
     //MARK: 设置高斯模糊视图
     fileprivate func setVisualView(){
         visualView = BaseVisualEffectView.noEffectVisualView()
@@ -93,7 +108,7 @@ class RainbowViewController: BaseViewController {
     
     //MARK: 点击播放按钮
     @objc func onPlay() {
-        CommonRecordManager.sharedManager.play()
+        CommonRecordManager.sharedManager.play(path: "")
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.toValue = Double(4) * Double.pi
         animation.duration = 1
@@ -126,7 +141,7 @@ class RainbowViewController: BaseViewController {
                     rainbowView?.isHidden = true
                     rainbowView?.alpha = 0.0
                 }
-                UIView.animate(withDuration: 1.5, animations: { [weak self] in
+                UIView.animate(withDuration: 2.0, animations: { [weak self] in
                     self?.rainbowView?.isHidden = false
                     self?.rainbowView?.alpha = 1.0
                 })
@@ -152,14 +167,13 @@ class RainbowViewController: BaseViewController {
             // 结束录音
             CommonRecordManager.sharedManager.stopRecord()
             // 移除录音动画
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
+            UIView.animate(withDuration: 1.0, animations: { [weak self] in
                 self?.rainbowView?.alpha = 0.0
                 self?.rainbowView?.isHidden = true
+                self?.rainbowView?.removeFromSuperview()
+                self?.rainbowView = nil
             })
-            rainbowView?.removeFromSuperview()
-            rainbowView = nil
             // 判断录制时间如果时间不足1s删除已经录制的文件
-            print("end:\(curTime)")
             if (curTime - 1 <= 1) {
                 CommonRecordManager.sharedManager.deleteCurFile()
                 let alert: UIAlertController = UIAlertController.init(title: "提示", message: "录制的语音日志时间必须超过1s,请重新录制", preferredStyle: UIAlertControllerStyle.alert)
@@ -186,7 +200,6 @@ class RainbowViewController: BaseViewController {
     @objc func onTimer() {
         self.tipLabel.text = "已录制" + " " + "\(curTime)" + " " + "S"
         self.curTime += 1
-        print("timer:\(curTime)")
     }
     
     func timerPause() {

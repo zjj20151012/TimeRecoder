@@ -8,18 +8,48 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 class CommonRecordManager:NSObject {
     
     /// 录制音频的总时长
     var totalLength: Float?
+    
     var recorder: AVAudioRecorder?
+    
     var player: AVAudioPlayer?
-    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first?.appending("/dailyRecord.wav")
+    
+    var dateStr: String?
+    
+    var finalPath: String?
+    
+    let filePath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first?.appending("/")
 
     // 单例
     static let sharedManager = CommonRecordManager.init()
     private override init(){}
+
+    //MARK: 文件操作
+    func writeToFile() {
+        let weekday = getWeekDay()
+        let dict: NSDictionary = ["audioName" : dateStr! as NSString,
+                                  "date" : dateStr! as NSString,
+                                  "filePath" : finalPath! as NSString,
+                                  "weekday" : String.init(format: "%d", weekday)
+                                  ]
+        let model = RainbowRecodModel.init(dict: dict as! [String : AnyObject])
+        saveAudio(data: model, key: dateStr!)
+        readFromFile()
+    }
+        
+    func readFromFile() {
+      let data = getSavedAudio()
+        NSLog("%@",data)
+    }
+    
+    func deleteCurFile() {
+        deleteAudio(key: dateStr!)
+    }
     
     //MARK: 开始录音
     func beginRecord() {
@@ -28,13 +58,13 @@ class CommonRecordManager:NSObject {
         do {
             try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         } catch let err{
-            print("设置类型失败:\(err.localizedDescription)")
+            print("设置失败:\(err.localizedDescription)")
         }
         // 设置session动作
         do {
             try session.setActive(true)
         } catch let err {
-            print("初始化动作失败:\(err.localizedDescription)")
+            print("初始化失败:\(err.localizedDescription)")
         }
         // 录音设置
         let recordSetting: [String: Any] = [AVSampleRateKey: NSNumber(value: 44100),//采样率
@@ -45,7 +75,13 @@ class CommonRecordManager:NSObject {
         ];
         // 开始录音
         do {
-            let url = URL(fileURLWithPath: filePath!)
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY年MM月dd日hh时mm分ss秒"
+            let nowTime = dateFormatter.string(from: date) as String
+            finalPath = filePath?.appending(nowTime + ".wav")
+            let url = URL(fileURLWithPath: finalPath!)
+            dateStr = nowTime
             recorder = try AVAudioRecorder(url: url, settings: recordSetting)
             recorder!.prepareToRecord()
             recorder!.record()
@@ -59,9 +95,10 @@ class CommonRecordManager:NSObject {
     func stopRecord() {
         if let recorder = self.recorder {
             if recorder.isRecording {
-                print("正在录音，马上结束它，文件保存到了：\(filePath!)")
+                writeToFile()
+                print("文件保存到了：\(finalPath!)")
             }else {
-                print("没有录音，但是依然结束它")
+                print("没有录音")
             }
             // 处理录制音频后播放声音特别小的问题
             let session: AVAudioSession = AVAudioSession.sharedInstance()
@@ -77,23 +114,16 @@ class CommonRecordManager:NSObject {
         }
     }
     
-    //MARK: 删除文件
-    func deleteCurFile() {
-        let fileManager = FileManager.default
-        do {
-            try fileManager.removeItem(atPath: filePath!)
-            print("删除成功!")
-        } catch let err {
-            print("删除文件失败:\(err.localizedDescription)")
-        }
-    }
-    
     //MARK: 播放
-    func play() {
+    func play(path: String) {
         do {
-            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: filePath!))
+            var filePath: String = path
+            if filePath.isEmpty {
+                filePath = finalPath!
+            }
+            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: filePath))
             player?.delegate = self
-            print("歌曲长度：\(player!.duration)")
+            print("录音长度：\(player!.duration)")
             totalLength = Float((player?.duration)!) 
             player!.play()
         } catch let err {
@@ -101,15 +131,32 @@ class CommonRecordManager:NSObject {
         }
     }
     
+    //MARK: 暂停播放
+    func pause() {
+        player?.pause()
+    }
+    
+    //MARK: 继续播放
+    func resume() {
+        player?.play()
+    }
+    
     //MARK: 停止播放
     func stop() {
         player?.stop()
     }
+    
+    //MARK: 检测播放状态
+    func checkState() -> Bool {
+        return (player?.isPlaying)!
+    }
 }
 
+//MARK: AVAudioPlayerDelegate
 extension CommonRecordManager: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-    print("12343")
-
+        let alert = UIAlertController.init(title: "提示", message: "播放完毕，总时长\(totalLength!) S", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction.init(title: "好", style: UIAlertActionStyle.default, handler: nil))
+        getCurViewController().present(alert, animated: true, completion: nil)
     }
 }

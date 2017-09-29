@@ -128,6 +128,9 @@ func deleteAudio(key: String) {
             lastArr.removeLastObject()
             // 更新字典
             dataDict.setObject(lastArr, forKey: item.key as! NSString)
+            if (lastArr.count == 0) {
+                dataDict.removeObject(forKey: key)
+            }
         }
     }
     print("删除后:",dataDict)

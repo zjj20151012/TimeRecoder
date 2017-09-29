@@ -48,7 +48,9 @@ class CommonRecordManager:NSObject {
     }
     
     func deleteCurFile() {
-        deleteAudio(key: dateStr!)
+        if ((dateStr) != nil) {
+            deleteAudio(key: dateStr!)
+        }
     }
     
     //MARK: 开始录音

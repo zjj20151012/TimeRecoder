@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nN7-pB-Hbz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eE1-bo-9ko">
+            <objects>
+                <navigationController id="nN7-pB-Hbz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jyl-sm-gbV">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZIo-m8-waW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEh-5w-jpA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1135" y="22"/>
+        </scene>
+        <!--Rainbow View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="RainbowViewController" id="BYZ-38-t0r" customClass="RainbowViewController" customModule="Rainbow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainbow_main" translatesAutoresizingMaskIntoConstraints="NO" id="mrL-mD-Xmc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nno-DE-0rl">
+                                <rect key="frame" x="20" y="587" width="335" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记 录 日 志" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WF-hE-6PM">
+                                        <rect key="frame" x="126" y="15.5" width="83" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14117647058823529" green="0.73725490196078436" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="S5v-yH-CRZ"/>
+                                    <constraint firstItem="6WF-hE-6PM" firstAttribute="centerX" secondItem="Nno-DE-0rl" secondAttribute="centerX" id="oQZ-NK-LLH"/>
+                                    <constraint firstItem="6WF-hE-6PM" firstAttribute="centerY" secondItem="Nno-DE-0rl" secondAttribute="centerY" id="qoX-RC-WtH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nno-DE-0rl" secondAttribute="bottom" constant="30" id="3p5-wI-KGH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mrL-mD-Xmc" secondAttribute="trailing" id="7e3-wt-aMp"/>
+                            <constraint firstItem="Nno-DE-0rl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9lh-E3-xzU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nno-DE-0rl" secondAttribute="trailing" constant="20" id="RW9-Y2-Hkp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mrL-mD-Xmc" secondAttribute="bottom" id="m4f-uK-XmD"/>
+                            <constraint firstItem="mrL-mD-Xmc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uIf-Rj-8Ek"/>
+                            <constraint firstItem="mrL-mD-Xmc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-64" id="yYf-oW-Yiy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7KF-Gn-dbi"/>
+                    <connections>
+                        <outlet property="recordView" destination="Nno-DE-0rl" id="ZRA-mA-qn6"/>
+                        <outlet property="tipLabel" destination="6WF-hE-6PM" id="U6D-vu-2ce"/>
+                        <segue destination="N7m-vL-9O0" kind="show" identifier="pushToList" id="Jpq-8a-SQ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-250.40000000000001" y="20.239880059970016"/>
+        </scene>
+        <!--Rainbow List View Controller-->
+        <scene sceneID="odH-FA-PBq">
+            <objects>
+                <viewController storyboardIdentifier="RainbowListViewController" id="N7m-vL-9O0" customClass="RainbowListViewController" customModule="Rainbow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9rE-nW-IO4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B8n-Vd-zpQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wMm-eP-zo1" firstAttribute="bottom" secondItem="B8n-Vd-zpQ" secondAttribute="bottom" id="6Bv-AX-Ad6"/>
+                            <constraint firstItem="wMm-eP-zo1" firstAttribute="trailing" secondItem="B8n-Vd-zpQ" secondAttribute="trailing" id="CBL-IB-N21"/>
+                            <constraint firstItem="B8n-Vd-zpQ" firstAttribute="top" secondItem="9rE-nW-IO4" secondAttribute="top" id="URh-8u-GzW"/>
+                            <constraint firstItem="B8n-Vd-zpQ" firstAttribute="leading" secondItem="wMm-eP-zo1" secondAttribute="leading" id="btK-xa-sX1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wMm-eP-zo1"/>
+                    </view>
+                    <connections>
+                        <outlet property="rainbowRecordList" destination="B8n-Vd-zpQ" id="79L-MX-pdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6kO-Uo-O2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="532" y="19.340329835082461"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="rainbow_main" width="320" height="480"/>
+    </resources>
+</document>
